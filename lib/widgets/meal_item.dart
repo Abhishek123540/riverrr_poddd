@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riverrr_poddd/models/meal.dart';
+import 'package:riverrr_poddd/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
@@ -21,11 +22,14 @@ class MealItem extends StatelessWidget {
             FadeInImage(
               placeholder: MemoryImage(kTransparentImage),
               image: NetworkImage(meal.imageUrl),
+              fit: BoxFit.cover,
+              height: 220,
+              width: double.maxFinite,
             ),
             Positioned(
               bottom: 0,
-              right: 20,
-              left: 20,
+              right: 22,
+              left: 22,
               child: Container(
                 color: Colors.black54,
                 padding:
@@ -46,7 +50,12 @@ class MealItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Row(
-                      children: [],
+                      children: [
+                        MealItemTrait(
+                          icon: Icons.schedule,
+                          label: '${meal.duration} min',
+                        )
+                      ],
                     )
                   ],
                 ),
