@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:riverrr_poddd/data/dummy_data.dart';
 import 'package:riverrr_poddd/models/category.dart';
-import 'package:riverrr_poddd/screens/meals.dart';
 
 class CategoryGridItem extends StatelessWidget {
-  const CategoryGridItem({super.key, required this.category});
+  const CategoryGridItem(
+      {super.key, required this.category, required this.onselectCategory});
 
   final Category category;
+  final void Function() onselectCategory;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       //GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  MealsScreen(title: 'New meal', meals: dummyMeals),
-            ));
-      },
+      onTap: onselectCategory,
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(16),
       child: Container(
