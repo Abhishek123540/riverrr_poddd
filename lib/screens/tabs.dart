@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:riverrr_poddd/models/meal.dart';
 import 'package:riverrr_poddd/screens/categories.dart';
 import 'package:riverrr_poddd/screens/meals.dart';
 
@@ -11,6 +12,8 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   int _selectedPageIndex = 0;
+  final List<Meal> _favouriteMeals = [];
+
   void _selectPage(int i) {
     setState(() {
       _selectedPageIndex = i;
@@ -22,10 +25,7 @@ class _TabsScreenState extends State<TabsScreen> {
     Widget activePage = const CategoriesScreen();
     var activePageTitle = 'Categories';
     if (_selectedPageIndex == 1) {
-      activePage = const MealsScreen(
-        title: 'Favourites',
-        meals: [],
-      );
+      activePage = const MealsScreen(meals: []);
       activePageTitle = 'Your Favourites';
     }
     return Scaffold(
